@@ -1,0 +1,41 @@
+<!-- Hero Section-->
+ <section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to our coffee workshop!</h1>
+        <p>Want to be a coffee master?</p>
+        <button class="cta-button">Book Now</button>
+    </div>
+ </section>
+
+<!-- Services Section-->
+ <section class="services">
+    <h2>Our services</h2>
+    <div class="services-cards">
+        <div *ngFor="let service of services">
+            <app-service-card [service]="service"></app-service-card>
+        </div>
+    </div>
+ </section>
+
+ <!-- About Us Section-->
+  <section class="about">
+    <div class="about-content">
+        <img src="assets/image/about-us.jpg" alt="About Us">
+        <div class="about-text">
+            <h2>About Spresso Coffee & Co</h2>
+            <p>At Spresso Coffee & Co, we believe that coffee is not just a beverage, but a journey that brings people together and creates memorable moments. Our mission is to offer more than just a cup of coffee; we aim to provide an exceptional coffee experience in every sip. From sourcing the finest beans to perfecting our brewing techniques, we are dedicated to delivering rich, full-bodied flavors that will transport you to the heart of coffee culture.
+
+                Our cozy café is not just a place to enjoy your favorite brew; it’s a space to connect with fellow coffee enthusiasts, learn new skills, and immerse yourself in the art of coffee. Through our hands-on workshops, including Latte Art, Espresso Mastery, and Home Brewing Techniques, we offer a chance for both beginners and seasoned coffee lovers to deepen their knowledge and perfect their craft. Led by our team of skilled baristas, each session is designed to empower you with the tools and confidence to make café-quality coffee at home or master the art of crafting the perfect espresso shot.
+                
+                Whether you're here to indulge in a freshly brewed cup, discover the nuances of a pour-over, or experiment with creating stunning latte art, Spresso Coffee & Co is dedicated to making every coffee moment memorable. Join us for a journey through coffee, and let us share our passion with you in every cup.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section-->
+   <section class="contact">
+        <h2>Have any question?</h2>
+        <app-contact></app-contact>
+   </section>
+
+   <!-- Footer (Added in app.component.html) -->
