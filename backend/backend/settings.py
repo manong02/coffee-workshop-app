@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     # Local
     'bookings',
+    'availabilities',
+    'notifications',
 ]
 
 MIDDLEWARE = [
