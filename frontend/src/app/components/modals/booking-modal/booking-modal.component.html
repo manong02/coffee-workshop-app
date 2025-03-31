@@ -1,0 +1,33 @@
+<div class="modal-overlay" (click)="closeModal.emit()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <!-- Close Button -->
+         <button class="close-btn" (click)="closeModal.emit()">✖</button>
+
+         <div class="modal-body">
+            <!-- Left Side -->
+             <div class="modal-form">
+                <h2>Ready to book?</h2>
+                <select id="service" [(ngModel)]="selectedService" (change)="updateImage()">
+                    <option *ngFor="let option of serviceOptions" [value]="option.name">{{option.display}}</option>
+                </select>
+
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+                <input type="email" placeholder="Email address" required>
+                <input type="number" placeholder="Phone Number" required>
+
+                <select id="availability">
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                </select>             
+             </div>
+
+             <!-- Right Side -->
+             <div class="modal-image">
+                <img [src]="selectedImage" alt="{{selectedService}}">
+             </div>
+         </div>
+         <button class="confirm-btn">Confirm</button>
+    </div>
+</div>

@@ -5,5 +5,5 @@
         <div class="price-tag">${{service.price}}</div>
     </div>
     <p>{{service.description}}</p>
-    <button class="book-button">Book Now</button>
+    <button class="book-button" (click)="openBooking.emit(service.title)">Book Now</button>
 </div>

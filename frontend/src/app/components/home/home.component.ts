@@ -2,15 +2,28 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServiceCardComponent } from '../service-card/service-card.component';
 import { ContactComponent } from '../contact/contact.component';
+import { BookingModalComponent } from '../modals/booking-modal/booking-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ServiceCardComponent, ContactComponent],
+  imports: [CommonModule, ServiceCardComponent, ContactComponent, BookingModalComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  isModalOpen = false;
+  selectedService = '';
+
+  openModal(service: string){
+    this.selectedService = service;
+    this.isModalOpen = true;
+  }
+
+  closeModal(){
+    this.isModalOpen = false;
+  }
   services = [
     {
       title: 'Latte Art Workshop',
