@@ -4,14 +4,12 @@
         <h1>Welcome to our coffee workshop!</h1>
         <p>Want to be a coffee master?</p>
         <button class="cta-button" (click)="openModal('Latte Art Workshop')">Book Now</button>
-        <app-booking-modal *ngIf="isModalOpen" [isOpen]="isModalOpen" (closeModal)="closeModal()"></app-booking-modal>
     </div>
  </section>
 
 <!-- Services Section-->
  <section class="services" id="services">
     <h2>Our services</h2>
-    <app-booking-modal *ngIf="isModalOpen" [isOpen]="isModalOpen" [selectedService]="selectedService" (closeModal)="closeModal()"></app-booking-modal>
     <div class="services-cards">
         <div *ngFor="let service of services">
             <app-service-card [service]="service" (openBooking)="openModal($event)"></app-service-card>
@@ -20,7 +18,7 @@
  </section>
 
  <!-- About Us Section-->
-  <section class="about">
+  <section class="about" id="about">
     <div class="about-content">
         <img src="assets/image/about-us.jpg" alt="About Us">
         <div class="about-text">
@@ -35,9 +33,26 @@
   </section>
 
   <!-- Contact Us Section-->
-   <section class="contact">
-        <h2>Have any question?</h2>
+   <section class="contact" id="contact">
         <app-contact></app-contact>
    </section>
 
-   <!-- Footer (Added in app.component.html) -->
+<!-- Modals -->
+<app-booking-modal 
+    *ngIf="isModalOpen" 
+    [isOpen]="isModalOpen" 
+    [selectedService]="selectedService" 
+    (closeModal)="closeModal()"
+    (confirmBooking)="onBookingConfirmed($event)">
+</app-booking-modal>
+
+<app-confirmation-modal
+    *ngIf="isConfirmationModalOpen"
+    [isConfirmationModalOpen]="isConfirmationModalOpen"
+    [firstName]="bookingDetails?.firstName"
+    [lastName]="bookingDetails?.lastName"
+    [email]="bookingDetails?.email"
+    [phoneNumber]="bookingDetails?.phonenumber"
+    [availability]="bookingDetails?.availability"
+    (closeConfirmationModal)="closeConfirmationModal()">
+</app-confirmation-modal>

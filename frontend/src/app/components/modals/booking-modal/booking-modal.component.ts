@@ -13,8 +13,15 @@ export class BookingModalComponent implements OnChanges {
   @Input() isOpen = false;
   @Input() selectedService: string = '';
   @Output() closeModal = new EventEmitter<void>();
+  @Output() confirmBooking = new EventEmitter<{firstName: string, lastName: string, email: string, phoneNumber: string, availability: string}>();
   selectedImage = '';
   
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+  phoneNumber: string = '';
+  availability: string = '';
+
   serviceOptions = [
     { name: 'Latte Art Workshop', display: 'Latte Art Workshop ($50)' },
     { name: 'Espresso Mastery', display: 'Espresso Mastery ($80)' },
@@ -39,5 +46,16 @@ export class BookingModalComponent implements OnChanges {
       default:
         this.selectedImage = '';
     }
+  }
+
+  onConfirm() {
+    this.confirmBooking.emit({
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      phoneNumber: this.phoneNumber,
+      availability: this.availability
+    });
+    this.closeModal.emit();
   }
 }

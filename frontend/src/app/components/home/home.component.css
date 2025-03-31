@@ -132,8 +132,8 @@
         width: 10rem !important;
     }
     .cta-button {
-        font-size: 0.8rem !important;
-        width: 10rem !important;
+        font-size: 1rem !important;
+        width: 12rem !important;
     }
     .services-cards {
         flex-direction: column;

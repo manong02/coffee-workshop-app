@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'frontend';

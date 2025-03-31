@@ -4,17 +4,27 @@ import { ServiceCardComponent } from '../service-card/service-card.component';
 import { ContactComponent } from '../contact/contact.component';
 import { BookingModalComponent } from '../modals/booking-modal/booking-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmationModalComponent } from '../modals/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ServiceCardComponent, ContactComponent, BookingModalComponent, FormsModule],
+  imports: [
+    CommonModule, 
+    ServiceCardComponent, 
+    ContactComponent, 
+    BookingModalComponent, 
+    FormsModule, 
+    ConfirmationModalComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   isModalOpen = false;
   selectedService = '';
+  isConfirmationModalOpen = false;
+  bookingDetails: any;
 
   openModal(service: string){
     this.selectedService = service;
@@ -24,6 +34,17 @@ export class HomeComponent {
   closeModal(){
     this.isModalOpen = false;
   }
+
+  onBookingConfirmed(details: any) {
+    this.bookingDetails = details;
+    this.isModalOpen =false;
+    this.isConfirmationModalOpen = true;
+  }
+
+  closeConfirmationModal() {
+    this.isConfirmationModalOpen = false;
+  }
+
   services = [
     {
       title: 'Latte Art Workshop',
