@@ -1,0 +1,99 @@
+.contact-container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px 5px rgba(0, 0, 0, 0.25);
+    width: 100%;
+
+    .contact-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5rem;
+        padding: 2rem;
+        width: 100%;
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .form-field input{
+            width: 20rem;
+            padding: 1rem;
+            border: 1px solid #000;
+            border-radius: 5px;
+            outline: none;
+            margin: 0.5rem 0;
+        }
+
+        .submit-button{
+            width: 20rem;
+            margin-top: 0.5rem;
+            padding: 0.8rem;
+            background-color: #000;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            &:hover {
+                background-color: rgba(157, 104, 59, 0.5);
+                color: #000;
+            }
+        }
+
+        .input-message{
+            display: flex;
+            align-items: flex-start;
+            height: 100%;
+        }
+        .input-message textarea{
+            margin-top: 3rem !important;
+            width: 20rem;
+            height: 20rem;
+            resize: none;
+            padding: 1rem;
+            border-radius: 5px;
+            outline: none;
+            margin: 0.5rem 0;
+        }
+        .mobile{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 1rem;
+    }
+
+        .contact-form {
+            padding: 1rem;
+            flex-direction: column;
+            gap: 0rem !important;
+
+            .form-field input,
+            .input-message textarea {
+                width: 100%;
+            }
+
+            .submit-button {
+                display: none;
+            }
+            .input-message {
+                display: flex;
+                flex-direction: column;
+            }
+            .mobile{
+                display: block !important;
+            }
+    }
+}
+    
