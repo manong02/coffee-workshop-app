@@ -1,1 +1,9 @@
-<p>service-card works!</p>
+<div class="service-card">
+    <h3>{{service.title}}</h3>
+    <div class="image-container">
+        <img [src]="service.image" [alt]="service.title"/>
+        <div class="price-tag">${{service.price}}</div>
+    </div>
+    <p>{{service.description}}</p>
+    <button class="book-button">Book Now</button>
+</div>
