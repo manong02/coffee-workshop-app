@@ -22,6 +22,8 @@
         position: relative;
         max-width: 700px;
         width: 90%;
+        box-sizing: border-box;
+        margin: 0 auto;
         
         .close-btn {
             position: absolute;
@@ -37,6 +39,7 @@
             display: flex;
             gap: 1.6rem;
             width: 100%;
+            flex-wrap: wrap;
 
             .modal-form {
                 display: flex;
@@ -45,12 +48,13 @@
                 margin: 1.2rem 0;
                 align-items: center;
                 justify-content: center;
+                width: 100%;
 
                 .left-right-side{
                     display: flex;
                     gap: 1.5rem;
                     width: 100%;
-                }
+                    flex-wrap: wrap;
 
                 .left-side{
                     flex: 1;
@@ -127,6 +131,7 @@
         }
     }
 }
+}
 
 .error-message {
     color: #dc3545;
@@ -142,9 +147,27 @@
     
     .modal-form input,
     .modal-form select {
-        width: 100% !important;
+        width: 100%;
         margin-bottom: 1rem;
         padding: 0.8rem;
         font-size: 1rem;
     }
+    .modal-body{
+        flex-direction: column;
+        align-items: center;;
+    }
+}
+
+@media (max-width: 425px) {
+    .modal-form input,
+    .modal-form select {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+
+    .left-side{
+        align-self: center;
+    }
+    
 }

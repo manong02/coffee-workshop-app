@@ -69,6 +69,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        align-self: center;
     }
     .footer-social {
         padding-left: 3rem;
@@ -78,4 +79,12 @@
         justify-content: center;
         text-align: center;
     }
+}
+
+@media (max-width: 425px) {
+    .footer-contact{
+        align-self: center;
+        text-align: center !important;
+    }
+    
 }
