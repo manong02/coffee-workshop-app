@@ -22,6 +22,6 @@ export class ConfirmationModalComponent {
   options: AnimationOptions = {
     path: '/assets/animations/confettijson.json',
     autoplay: true,
-    loop: true
+    loop: false
   };
 }

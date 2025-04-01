@@ -1,3 +1,4 @@
+
 .modal-overlay{
     position: fixed;
     top: 0;
@@ -34,13 +35,30 @@
 
         .modal-body {
             display: flex;
-            gap: 2rem;
+            gap: 1.6rem;
+            width: 100%;
 
             .modal-form {
                 display: flex;
                 flex-direction: column;
                 flex:1;
                 margin: 1.2rem 0;
+                align-items: center;
+                justify-content: center;
+
+                .left-right-side{
+                    display: flex;
+                    gap: 1.5rem;
+                    width: 100%;
+                }
+
+                .left-side{
+                    flex: 1;
+                }
+
+                .right-side{
+                    flex: 1;
+                }
 
                 h2 {
                     font-size: 1.3rem;
@@ -55,7 +73,7 @@
                     border-radius: 5px;
                     border: none;
                     outline: none;
-                    margin: 0.4rem 0;
+                    margin: 0.5rem 0;
                     background-color: rgba(67, 102, 139, 0.38);
                     color: #000;
                     &::placeholder{
@@ -66,6 +84,7 @@
                 select {
                     cursor: pointer;
                 }
+
             }
         }
 
@@ -74,13 +93,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top:2rem;
-            position: relative;
+            position: relative;  
+            padding-top:2em; 
 
             img {
                 width: 100%;
                 height: auto;
                 border-radius: 5px;
+                /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); */
             }
 
         }
@@ -108,14 +128,21 @@
     }
 }
 
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-bottom: 8px;
+
+}
+
 @media (max-width: 768px) {
-    .modal-image{
+    .right-side{
         display: none !important;
     }
     
     .modal-form input,
     .modal-form select {
-        width: 100%;
+        width: 100% !important;
         margin-bottom: 1rem;
         padding: 0.8rem;
         font-size: 1rem;

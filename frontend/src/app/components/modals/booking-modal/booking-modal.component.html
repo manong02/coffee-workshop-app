@@ -6,29 +6,49 @@
 
         <div class="modal-body">
             <!-- Left Side -->
-            <div class="modal-form">
-                <h2>Ready to book?</h2>
-                <select id="service" [(ngModel)]="selectedService" (change)="updateImage()">
-                    <option *ngFor="let option of serviceOptions" [value]="option.name">{{option.display}}</option>
-                </select>
-
-                <input type="text" [(ngModel)]="firstName" placeholder="First Name" required>
-                <input type="text" [(ngModel)]="lastName" placeholder="Last Name" required>
-                <input type="email" [(ngModel)]="email" placeholder="Email address" required>
-                <input type="number" [(ngModel)]="phoneNumber" placeholder="Phone Number" required>
-                <select id="availability" [(ngModel)]="availability" placeholder="Select availability">
-                    <option value="">Select availability</option>
-                    <option>Morning</option>
-                    <option>Afternoon</option>
-                    <option>Evening</option>
-                </select>             
-            </div>
-
-            <!-- Right Side -->
-            <div class="modal-image">
-                <img [src]="selectedImage" alt="{{selectedService}}">
-            </div>
+            <form class="modal-form" #bookingForm="ngForm" (ngSubmit)="onConfirm(bookingForm)" novalidate>
+                <div class="left-right-side">
+                    <div class="left-side">
+                        <h2>Ready to book?</h2>
+                    <select id="service" name="service" [(ngModel)]="selectedService" #serviceField="ngModel" (change)="updateImage()">
+                        <option *ngFor="let option of serviceOptions" [value]="option.name">{{option.display}}</option>
+                    </select>
+    
+                    <input type="text" [(ngModel)]="firstName" name="firstName" #firstNameField="ngModel" placeholder="First Name" required>
+                    <div class="error-message" *ngIf="(submitted || firstNameField.dirty) && firstNameField.invalid">First name is required</div>
+    
+                    <input type="text" [(ngModel)]="lastName" name="lastName" #lastNameField="ngModel" placeholder="Last Name" required>
+                    <div class="error-message" *ngIf="(submitted || lastNameField.dirty) && lastNameField.invalid">Last name is required</div>
+    
+                    <input type="email" [(ngModel)]="email" name="email" #emailField="ngModel" placeholder="Email address" required email>
+                    <div class="error-message" *ngIf="(submitted || emailField.dirty) && emailField.invalid">
+                        <span *ngIf="emailField.errors?.['required']">Email is required</span>
+                        <span *ngIf="emailField.errors?.['email']">Please enter a valid email address</span>
+                    </div>
+    
+                    <input type="tel" [(ngModel)]="phoneNumber" name="phoneNumber" #phoneNumberField="ngModel" placeholder="Phone Number" required pattern="[0-9]*">
+                    <div class="error-message" *ngIf="(submitted || phoneNumberField.dirty) && phoneNumberField.invalid">
+                        <span *ngIf="phoneNumberField.errors?.['required']">Phone number is required</span>
+                        <span *ngIf="phoneNumberField.errors?.['pattern']">Please enter only numbers</span>
+                    </div>
+    
+                    <select id="availability" name="availability" [(ngModel)]="availability" #availabilityField="ngModel" required>
+                        <option value="">Select availability</option>
+                        <option>Morning</option>
+                        <option>Afternoon</option>
+                        <option>Evening</option>
+                    </select>
+                    <div class="error-message" *ngIf="(submitted || availabilityField.dirty) && availabilityField.invalid">Please select availability</div>
+                    </div>
+                     <!-- Right Side -->
+                    <div class="right-side">
+                        <div class="modal-image">
+                            <img [src]="selectedImage" alt="{{selectedService}}">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" type="button" (click)="$event.stopPropagation(); onConfirm(bookingForm)">Confirm</button>
+            </form>
         </div>
-        <button class="confirm-btn" (click)="onConfirm()">Confirm</button>
     </div>
 </div>

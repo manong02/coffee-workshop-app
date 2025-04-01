@@ -16,11 +16,14 @@ export class BookingModalComponent implements OnChanges {
   @Output() confirmBooking = new EventEmitter<{firstName: string, lastName: string, email: string, phoneNumber: string, availability: string}>();
   selectedImage = '';
   
+  
   firstName: string = '';
   lastName: string = '';
   email: string = '';
   phoneNumber: string = '';
   availability: string = '';
+
+  submitted = false;
 
   serviceOptions = [
     { name: 'Latte Art Workshop', display: 'Latte Art Workshop ($50)' },
@@ -41,21 +44,41 @@ export class BookingModalComponent implements OnChanges {
         this.selectedImage = '/assets/image/espresso-booking.jpg';
         break;
       case 'Home Brewing':
-        this.selectedImage = '/assets/image/home-brewing-booking.jpg';
+        this.selectedImage = '/assets/image/home-brewing-booking2.jpg';
         break;
       default:
         this.selectedImage = '';
     }
   }
 
-  onConfirm() {
-    this.confirmBooking.emit({
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      phoneNumber: this.phoneNumber,
-      availability: this.availability
-    });
-    this.closeModal.emit();
+  onConfirm(bookingForm: any) {
+    this.submitted = true;
+
+    if (bookingForm.invalid) {
+      return;
+
+    } else {
+      this.confirmBooking.emit({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        phoneNumber: this.phoneNumber,
+        availability: this.availability
+      });
+
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+      this.phoneNumber = '';
+      this.availability = '';
+      this.selectedService = '';
+
+      bookingForm.resetForm();
+      this.submitted = false;
+      this.closeModal.emit();
+
+    }
+    
   }
+
 }
