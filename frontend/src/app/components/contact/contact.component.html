@@ -23,8 +23,10 @@
             <button class="submit-button" type="button" (click)="$event.stopPropagation(); handleContactFormSubmission(contactForm, firstName, lastName, email, phoneNumber, message)">Send message</button>
         </div>
         <div class="input-message">
-            <textarea name="message" id="message" [(ngModel)]="message" name="message" #messageField="ngModel" placeholder="Your message" rows="5" required></textarea>
+            <div class="input-error">
+                <textarea name="message" id="message" [(ngModel)]="message" name="message" #messageField="ngModel" placeholder="Your message" rows="5" required></textarea>
             <div class="error-message" *ngIf="(submitted || messageField.dirty) && messageField.invalid">Message is required</div>
+            </div>
             <button class="submit-button mobile" type="button" (click)="$event.stopPropagation(); handleContactFormSubmission(contactForm, firstName, lastName, email, phoneNumber, message)">Send message</button>
         </div>
     </form>

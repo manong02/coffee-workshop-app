@@ -8,3 +8,19 @@ class NotificationService:
         recipient = booking.email
 
         send_mail(subject, message, "noreply@example.com", [recipient], fail_silently=False)
+
+    @staticmethod
+    def send_contact_form_email(first_name, last_name, email, phone_number, message):
+        subject = f"New Contact Form Submission from {first_name} {last_name}"
+        message_body = f"""
+        First Name: {first_name}
+        Last Name: {last_name}
+        Email: {email}
+        Phone Number: {phone_number if phone_number else "Not provided"}
+
+        Message: 
+        {message}
+        """
+        recipient = "spressoworkshop@gmail.com"
+
+        send_mail(subject, message_body, "noreply@example.com", [recipient], fail_silently=False)
