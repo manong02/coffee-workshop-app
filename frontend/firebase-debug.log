@@ -1,0 +1,31 @@
+[debug] [2025-04-01T16:50:54.348Z] ----------------------------------------------------------------------
+[debug] [2025-04-01T16:50:54.352Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manon\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-04-01T16:50:54.353Z] CLI Version:   14.0.1
+[debug] [2025-04-01T16:50:54.353Z] Platform:      win32
+[debug] [2025-04-01T16:50:54.353Z] Node Version:  v22.11.0
+[debug] [2025-04-01T16:50:54.354Z] Time:          Tue Apr 01 2025 18:50:54 GMT+0200 (Central European Summer Time)
+[debug] [2025-04-01T16:50:54.354Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-01T16:50:54.612Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-01T16:50:54.613Z] > authorizing via signed-in user (manon.golos@gmail.com)
+[debug] [2025-04-01T16:50:54.613Z] [iam] checking project spresso-workshop for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-04-01T16:50:54.614Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:54.615Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:54.616Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/spresso-workshop:testIamPermissions [none]
+[debug] [2025-04-01T16:50:54.616Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/spresso-workshop:testIamPermissions x-goog-quota-user=projects/spresso-workshop
+[debug] [2025-04-01T16:50:54.616Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/spresso-workshop:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-01T16:50:55.674Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/spresso-workshop:testIamPermissions 200
+[debug] [2025-04-01T16:50:55.674Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/spresso-workshop:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-01T16:50:55.676Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:55.676Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:55.677Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/spresso-workshop [none]
+[debug] [2025-04-01T16:50:56.039Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/spresso-workshop 200
+[debug] [2025-04-01T16:50:56.039Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/spresso-workshop {"projectId":"spresso-workshop","projectNumber":"28579944710","displayName":"spresso-workshop","name":"projects/spresso-workshop","resources":{"hostingSite":"spresso-workshop"},"state":"ACTIVE","etag":"1_fa37c5c2-065c-4f72-a134-81ffe1a843f9"}
+[info] 
+[info] === Deploying to 'spresso-workshop'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-04-01T16:50:56.056Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:56.056Z] Checked if tokens are valid: true, expires at: 1743529000254
+[debug] [2025-04-01T16:50:56.056Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/spresso-workshop/versions [none]
+[debug] [2025-04-01T16:50:56.056Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/spresso-workshop/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
