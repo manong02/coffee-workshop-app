@@ -32,7 +32,7 @@
 
   <!-- Contact Us Section-->
    <section class="contact" id="contact">
-        <app-contact></app-contact>
+        <app-contact (contactSubmitted)="onContactSubmitted($event)"></app-contact>
    </section>
 
 <!-- Modals -->
@@ -54,3 +54,13 @@
     [availability]="bookingDetails?.availability"
     (closeConfirmationModal)="closeConfirmationModal()">
 </app-confirmation-modal>
+
+<app-contact-form-modal
+    *ngIf="isContactFormModalOpen"
+    [isContactFormModalOpen]="isContactFormModalOpen"
+    [firstName]="bookingDetails?.firstName"
+    [lastName]="bookingDetails?.lastName"
+    [email]="bookingDetails?.email"
+    [phoneNumber]="bookingDetails?.phonenumber"
+    (closeContactFormModal)="closeContactFormModal()">
+</app-contact-form-modal>

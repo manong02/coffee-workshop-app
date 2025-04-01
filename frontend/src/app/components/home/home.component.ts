@@ -5,6 +5,7 @@ import { ContactComponent } from '../contact/contact.component';
 import { BookingModalComponent } from '../modals/booking-modal/booking-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmationModalComponent } from '../modals/confirmation-modal/confirmation-modal.component';
+import { ContactFormModalComponent } from '../modals/contact-form-modal/contact-form-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ import { ConfirmationModalComponent } from '../modals/confirmation-modal/confirm
     ContactComponent, 
     BookingModalComponent, 
     FormsModule, 
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ContactFormModalComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
@@ -25,6 +27,7 @@ export class HomeComponent {
   selectedService = '';
   isConfirmationModalOpen = false;
   bookingDetails: any;
+  isContactFormModalOpen = false;
 
   openModal(service: string){
     this.selectedService = service;
@@ -44,6 +47,19 @@ export class HomeComponent {
   closeConfirmationModal() {
     this.isConfirmationModalOpen = false;
   }
+
+  openContactFormModal() {
+    this.isContactFormModalOpen = true;
+  }
+
+  closeContactFormModal() {
+    this.isContactFormModalOpen = false;
+  }
+
+  onContactSubmitted(data: any) {
+    this.isContactFormModalOpen = true;
+    this.bookingDetails = data;  
+}
 
   services = [
     {

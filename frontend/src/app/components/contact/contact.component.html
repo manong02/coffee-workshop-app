@@ -1,24 +1,31 @@
 <div class="contact-container">
-    <form action="" class="contact-form">
+    <form action="" class="contact-form" #contactForm="ngForm" (ngSubmit)="handleContactFormSubmission(contactForm, firstName, lastName, email, phoneNumber, message)">
         <div class="input-group">
             <h2>Have any question?</h2>
             <div class="form-field">
-                <input type="text" placeholder="First Name" required>
+                <input type="text" [(ngModel)]="firstName" name="firstName" #firstNameField="ngModel" placeholder="First Name" required>
+                <div class="error-message" *ngIf="(submitted || firstNameField.dirty) && firstNameField.invalid">First name is required</div>
             </div>
             <div class="form-field">
-                <input type="text" placeholder="Last Name" required>
+                <input type="text" [(ngModel)]="lastName" name="lastName" #lastNameField="ngModel" placeholder="Last Name" required>
+                <div class="error-message" *ngIf="(submitted || lastNameField.dirty) && lastNameField.invalid">Last name is required</div>
             </div>
             <div class="form-field">
-                <input type="email" placeholder="Email address" required>
+                <input type="email" [(ngModel)]="email" name="email" #emailField="ngModel" placeholder="Email address" required email>
+                <div class="error-message" *ngIf="(submitted || emailField.dirty) && emailField.invalid">
+                    <span *ngIf="emailField.errors?.['required']">Email is required</span>
+                    <span *ngIf="emailField.errors?.['email']">Please enter a valid email address</span>
+                </div>
             </div>
             <div class="form-field">
-                <input type="number" placeholder="Phone Number (optional)">
+                <input type="number" [(ngModel)]="phoneNumber" name="phoneNumber" #phoneNumberField="ngModel" placeholder="Phone Number (optional)">
             </div>
-            <button class="submit-button">Send message</button>
+            <button class="submit-button" type="button" (click)="$event.stopPropagation(); handleContactFormSubmission(contactForm, firstName, lastName, email, phoneNumber, message)">Send message</button>
         </div>
         <div class="input-message">
-            <textarea name="message" id="message" placeholder="Your message" rows="5" required></textarea>
-            <button class="submit-button mobile">Send message</button>
+            <textarea name="message" id="message" [(ngModel)]="message" name="message" #messageField="ngModel" placeholder="Your message" rows="5" required></textarea>
+            <div class="error-message" *ngIf="(submitted || messageField.dirty) && messageField.invalid">Message is required</div>
+            <button class="submit-button mobile" type="button" (click)="$event.stopPropagation(); handleContactFormSubmission(contactForm, firstName, lastName, email, phoneNumber, message)">Send message</button>
         </div>
     </form>
 </div>
