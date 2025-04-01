@@ -159,15 +159,17 @@
 }
 
 @media (max-width: 425px) {
-    .modal-form input,
-    .modal-form select {
-        font-size: 0.9rem;
-        padding: 0.7rem;
+    .modal-content{
+        padding: 2rem !important;
     }
 
 
     .left-side{
         align-self: center;
+    }
+
+    .confirm-btn{
+        width: 18rem !important;
     }
     
 }

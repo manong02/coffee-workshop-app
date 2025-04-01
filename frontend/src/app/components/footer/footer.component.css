@@ -85,6 +85,13 @@
     .footer-contact{
         align-self: center;
         text-align: center !important;
+        padding: 0 !important;
     }
+
+    .footer-right{
+        padding: 0 !important;
+    }
+
+    
     
 }
