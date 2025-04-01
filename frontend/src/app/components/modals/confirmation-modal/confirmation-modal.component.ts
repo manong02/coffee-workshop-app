@@ -16,7 +16,7 @@ export class ConfirmationModalComponent {
   @Input() lastName: string = '';
   @Input() email: string = '';
   @Input() phoneNumber: string = '';
-  @Input() availability: string = '';
+  @Input() availability: {date: string, time: string} = {date: '', time: ''};
   @Output() closeConfirmationModal = new EventEmitter<void>();
 
   options: AnimationOptions = {
