@@ -32,11 +32,11 @@
                         <span *ngIf="phoneNumberField.errors?.['pattern']">Please enter only numbers</span>
                     </div>
     
-                    <select id="availability" name="availability" [(ngModel)]="availability" #availabilityField="ngModel" required>
+                    <select id="availability" name="availability" [(ngModel)]="availability" #availabilityField="ngModel" (change)="onAvailabilityChange($event)" required>
                         <option value="">Select availability</option>
-                        <option>Morning</option>
-                        <option>Afternoon</option>
-                        <option>Evening</option>
+                        <option *ngFor="let slot of availableSlots" [value]="slot.id">
+                            {{slot.date | date:'MMM d, y'}} at {{slot.time}}
+                        </option>
                     </select>
                     <div class="error-message" *ngIf="(submitted || availabilityField.dirty) && availabilityField.invalid">Please select availability</div>
                     </div>

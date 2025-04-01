@@ -10,7 +10,7 @@ from ..serializers.availabilities_serializers import AvailabilitySerializer
 
 
 class AvailabilityViewSet(viewsets.ModelViewSet):
-    queryset = Availability.objects.all()
+    queryset = Availability.objects.all() 
     serializer_class = AvailabilitySerializer
 
     @action(detail=True, methods=['post'])
@@ -18,7 +18,11 @@ class AvailabilityViewSet(viewsets.ModelViewSet):
         availability = self.get_object()
         if Booking.objects.filter(availability=availability).exists():
             return Response({"error": "This availability is already taken."}, status=status.HTTP_400_BAD_REQUEST)
+
         Booking.objects.create(availability=availability, confirmed=False)
+        availability.is_booked = True  
+        availability.save()  
+
         return Response({"message": "Booking successful."}, status=status.HTTP_201_CREATED)
 
     @action(detail=True, methods=['post'])
@@ -26,5 +30,9 @@ class AvailabilityViewSet(viewsets.ModelViewSet):
         availability = self.get_object()
         if Booking.objects.filter(availability=availability).exists():
             return Response({"error": "This availability is already taken."}, status=status.HTTP_400_BAD_REQUEST)
+
         Booking.objects.create(availability=availability, confirmed=True)
+        availability.is_booked = True  
+        availability.save()  
+
         return Response({"message": "Booking confirmed."}, status=status.HTTP_201_CREATED)

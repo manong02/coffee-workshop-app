@@ -9,7 +9,7 @@
             </div>
             <h2>Thanks for booking with us!</h2>
             <p>You have received an email confirmation at <strong>{{email}}</strong>.</p>
-            <p>See you on <strong>{{availability}}</strong>, <strong>{{firstName}} {{lastName}}</strong>.</p>
+            <p>See you on <strong>{{ availability.date | date:"longDate" }}</strong> at <strong>{{ availability.time }}</strong>, <strong>{{ firstName }} {{ lastName }}</strong>.</p>
         </div>
     </div>   
 </div>

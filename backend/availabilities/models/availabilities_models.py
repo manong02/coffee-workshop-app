@@ -7,8 +7,12 @@ from django.utils.timezone import now
 
 
 class Availability(models.Model):
-    datetime = models.DateField(unique=True)
-    is_available = models.BooleanField(default=True)
+    date = models.DateField(unique=True)
+    time = models.TimeField(default="12:00:00")
+    is_booked = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ['date', 'time']
     
     def __str__(self):
-        return f"{self.datetime} - {self.is_available}"
+        return f"{self.date} - {self.time} - {self.is_booked}"
