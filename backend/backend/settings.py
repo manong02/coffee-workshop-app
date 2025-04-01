@@ -135,3 +135,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",  # Angular dev server
 ]
+
+
+EMAIL_BACKEND = 'notifications.services.custom_email_backend.CustomEmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'spressoworkshop@gmail.com' 
+EMAIL_HOST_PASSWORD = 'aioy jqny xjfq rekl' 
+DEFAULT_FROM_EMAIL = 'spressoworkshop@gmail.com'  
